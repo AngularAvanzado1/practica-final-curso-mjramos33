@@ -1,0 +1,22 @@
+{
+  "npmScope": "practica-final-curso-mjramos33",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "world-app": {
+      "tags": []
+    },
+    "world-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["world-app"]
+    }
+  }
+}
