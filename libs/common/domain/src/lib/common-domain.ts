@@ -16,7 +16,7 @@ export interface IsoObjectExtended{
 export interface Region extends IsoObject{
     id:string;
     code:string;
-    iso2Code:string;
+    iso2code:string;
     name:string;
 }
 

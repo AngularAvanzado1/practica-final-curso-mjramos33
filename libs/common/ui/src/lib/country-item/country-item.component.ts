@@ -39,10 +39,10 @@ export class CountryItemComponent implements OnInit {
 
   }
 
-    /*método para volver a la region*/
-    navigateToRegion(code:string){
-      this.router.navigate(['region',code]);
+  /*método para volver a la region*/
+  navigateToRegion(code:string){
+    this.router.navigate(['region',code]);
 
-    }
+  }
 
 }

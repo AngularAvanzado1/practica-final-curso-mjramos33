@@ -1,27 +1,28 @@
 <div class="container" style="margin:2em">
     <div class="row">
         <div class="col-md-4 col-sm-12">
-            <h1>Página de Región</h1>
+            <h1>Region Page</h1>
         </div>
         <div class="col-md-1 col-sm-6">
-            <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Volver a Home</button>
+            <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
         </div>
     </div>
-
     <hr>
     <div class=" row ">
         <div class="col-md-4 col-sm-12 ">
-            <h3>Paises de la region:</h3>
+            <h3>Countries:</h3>
         </div>
     </div>
 </div>
 <div class="container " style="margin-bottom:2em">
-    <div class="row ">
-        <div class="card col-md-2 col-sm-12 " *ngFor="let country of countries;let i=index; " style="margin:0.1em ">
-            <div class="card-body ">
-                <h5 class="card-title ">{{i+1}} - {{country.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">{{country.capitalCity}}</h6>
-                <button class="btn btn-outline-primary" (click)="navigateToCountry(country.id)" style="padding:2px;">+ info</button>
+    <div class="row">
+        <div class="col-md-3 col-sm-12" *ngFor="let country of countries;let i=index;" style="margin-bottom:0.5em">
+            <div class="card" style="margin:0.1em">
+                <div class="card-body ">
+                    <h5 class="card-title ">{{i+1}} - {{country.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted ">{{country.capitalCity}}</h6>
+                    <button class="btn btn-outline-primary" (click)="navigateToCountry(country.id)" style="padding:2px;">+ info</button>
+                </div>
             </div>
         </div>
     </div>

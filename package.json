@@ -9,7 +9,7 @@
         "build:world-app": "ng build --prod",
         "test:world-app": "ng test",
         "lint": "nx workspace-lint && ng lint",
-        "e2e": "ng e2e",
+        "e2e:world-app": "ng e2e world-app-e2e --watch",
         "affected:apps": "nx affected:apps",
         "affected:libs": "nx affected:libs",
         "affected:build": "nx affected:build",
