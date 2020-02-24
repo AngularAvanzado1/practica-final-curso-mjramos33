@@ -17,6 +17,18 @@
     "world-app-e2e": {
       "tags": [],
       "implicitDependencies": ["world-app"]
+    },
+    "common-domain": {
+      "tags": []
+    },
+    "common-region-ui": {
+      "tags": []
+    },
+    "common-ui": {
+      "tags": []
+    },
+    "common-data": {
+      "tags": []
     }
   }
 }

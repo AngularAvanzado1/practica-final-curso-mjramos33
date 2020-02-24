@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@practica-final/domain": ["libs/common/domain/src/index.ts"],
+      "@practica-final/ui": ["libs/common/ui/src/index.ts"],
+      "@practica-final/data": ["libs/common/data/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

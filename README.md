@@ -37,7 +37,7 @@ Explorar la información abierta y disponible en el [API del Banco Mundial](http
 
 ## Mínimo
 
-- Mono repositorio generado con las herramientas de [Nx.dev](https://nx.dev/angular)
+- Mono repositorio generado con las herramientas de [Nx.dev](https://nx.dev/angular) --> OK
 
 - AL menos una aplicación y una librería
 
