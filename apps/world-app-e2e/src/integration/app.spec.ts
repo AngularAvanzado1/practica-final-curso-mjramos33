@@ -1,3 +1,5 @@
+/* TEST E2E CON CYPRESS PARA LA HOME Y PARA LA PAGINA DE REGION (prueba: North America) */
+
 import { getHeader, getH3, getTableContent,getH5 } from '../support/app.po';
 
 describe('GIVEN: the world-app application', () => {

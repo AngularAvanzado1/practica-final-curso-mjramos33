@@ -6,6 +6,6 @@ import { CommonModule } from '@angular/common';
 import { RegionsService } from './regions/regions.service';
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class DataModule {}

@@ -25,6 +25,7 @@ export class RegionsComponent implements OnInit {
       (data:RegionsAPIResp) => {
         //cogemos el array de Region y lo filtramos por ID 
         this.regions= this.filtrarRegionesIDNumerico(data[1]);
+
       },
       (error) => {console.log(error)},
     );

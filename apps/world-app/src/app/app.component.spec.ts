@@ -1,33 +1,35 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { UiModule,RegionsComponent } from '@practica-final/ui';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent]
-    }).compileComponents();
-  }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+describe('GIVEN: An AppComponent declared in AppModule', () => {
+  describe('WHEN: The AppModule is compiled', () => {
+      beforeEach(
+        async(() => {
+            TestBed.configureTestingModule({
+              imports: [RouterTestingModule , HttpClientModule],
+              declarations: [AppComponent]
+            }).compileComponents();
+        })
+      );//before each
 
-  it(`should have as title 'world-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('world-app');
-  });
+      it('THEN: Should create the app', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const app = fixture.debugElement.componentInstance;
+        expect(app).toBeTruthy();
+      });
+    
+      it(`THEN: Should have as title 'world-app'`, () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const app = fixture.debugElement.componentInstance;
+        expect(app.title).toEqual('world-app');
+      });
+    
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to world-app!'
-    );
-  });
-});
+  });//Describe2
+});//Describe1
