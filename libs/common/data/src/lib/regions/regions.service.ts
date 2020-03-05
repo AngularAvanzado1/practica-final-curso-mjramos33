@@ -22,20 +22,20 @@ export class RegionsService {
   
   /*MEtodo que realiza la llamada HTTP y devuelve un objeto RegionsAPIResp*/
   public getRegionsFromApi():Observable<RegionsAPIResp> {
-      console.log("[regions.service.ts]- getRegionsFromApi");
+      console.log("[RegionsService]- getRegionsFromApi");
       return this.httpClient.get<RegionsAPIResp>(this.urlRegions);
   }//getRegionsFromApi
   
   /*metodo que realiza la llamada HTTP y devuelve un objeto CountriesAPIResp*/
   public getOneRegionFromApi(code:string):Observable<CountriesAPIResp> {
-    console.log("[regions.service.ts]- REGION CODE: "+code);
+    console.log("[RegionsService]- getOneRegionFromApi -CODE: "+code);
     this.urlOneRegion="http://api.worldbank.org/v2/region/"+code+"/country?per_page=1000&format=json"
     return this.httpClient.get<CountriesAPIResp>(this.urlOneRegion);
   }//getOneRegionFromApi
 
     /*metodo que realiza la llamada HTTP y devuelve un objeto CountriesAPIResp*/
     public getCountryFromApi(id:string):Observable<CountryAPIResp> {
-      console.log("[regions.service.ts]- COUNTRY ID: "+id);
+      console.log("[RegionsService]- getCountryFromApi - ID: "+id);
       this.urlCountry="http://api.worldbank.org/V2/country/"+id+"?format=json"
       return this.httpClient.get<CountryAPIResp>(this.urlCountry);
     }//getOneRegionFromApi

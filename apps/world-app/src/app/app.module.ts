@@ -11,7 +11,7 @@ import { APP_ROUTING } from './app.routes';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }), 
+    RouterModule.forRoot([{ path: 'history', loadChildren: () => import('./history/history.module').then(m => m.HistoryModule) }], { initialNavigation: 'enabled' }), 
     UiModule,
     HttpClientModule, 
     APP_ROUTING

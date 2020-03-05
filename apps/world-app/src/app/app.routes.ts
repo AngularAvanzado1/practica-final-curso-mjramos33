@@ -2,6 +2,7 @@
 
 import { RouterModule, Routes } from '@angular/router';
 import { RegionItemComponent,RegionsComponent,CountryItemComponent } from '@practica-final/ui';
+import { HistoryComponent } from './history/history.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: RegionsComponent },

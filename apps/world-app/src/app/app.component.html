@@ -1,3 +1,13 @@
 <!--componente de la librería ui -->
 
-<router-outlet></router-outlet>
+<div class="container" style="width: 100%">
+    <div class="row" style="margin:0px;">
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+        <nav class="col-md-2" class="history">
+            <a [routerLink]="['/history']">Historial: {{navegacion}} navegaciones</a>
+        </nav>
+
+    </div>
+</div>

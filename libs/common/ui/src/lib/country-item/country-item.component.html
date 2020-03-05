@@ -1,17 +1,22 @@
 <div class="container" style="margin:2em">
     <div class="row">
-        <div class="col-md-5 col-sm-12">
-            <h1>{{country.name}}</h1>
-        </div>
-        <div class="col-md-2 col-sm-6">
+        <div class="col-md-3 col-sm-6">
             <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
         </div>
-        <div class="col-md-2 col-sm-6">
+        <div class="col-md-3 col-sm-6">
             <button class="btn btn-group-toggle" (click)="navigateToRegion(country.region.id);" style="margin:0.5em">Back to Region</button>
         </div>
     </div>
 </div>
-<div class="container " style="margin-bottom:2em">
+<div *ngIf="country">
+    <div class="container" style="margin:2em">
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
+                <h1>{{country.name}}</h1>
+            </div>
+
+        </div>
+    </div>
     <div class="row">
         <table class="table col-md-4">
             <tbody>
@@ -53,36 +58,38 @@
             </tbody>
         </table>
     </div>
-</div>
-<div class="container " style="margin-bottom:2em">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col" style="color:blue">Name</th>
-                <th scope="col" style="color:blue">ID</th>
-                <th scope="col" style="color:blue">ISO TO CODE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row" style="color:blue">Region</th>
-                <td *ngIf="country.region.value != '' ">{{country.region.value}}</td>
-                <td *ngIf="country.region.value == '' ">-</td>
-                <td *ngIf="country.region.id != '' ">{{country.region.id}}</td>
-                <td *ngIf="country.region.id == '' ">-</td>
-                <td *ngIf="country.region.iso2code != '' ">{{country.region.iso2code}}</td>
-                <td *ngIf="country.region.iso2code == '' ">-</td>
-            </tr>
-            <tr>
-                <th scope="row" style="color:blue">Admin region</th>
-                <td *ngIf="country.adminregion.value != '' ">{{country.adminregion.value}}</td>
-                <td *ngIf="country.adminregion.value == '' ">-</td>
-                <td *ngIf="country.adminregion.id != '' ">{{country.adminregion.id}}</td>
-                <td *ngIf="country.adminregion.id == '' ">-</td>
-                <td *ngIf="country.adminregion.iso2code != '' ">{{country.adminregion.iso2code}}</td>
-                <td *ngIf="country.adminregion.iso2code == '' ">-</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="container " style="margin-bottom:2em">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col" style="color:blue">Name</th>
+                        <th scope="col" style="color:blue">ID</th>
+                        <th scope="col" style="color:blue">ISO TO CODE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" style="color:blue">Region</th>
+                        <td *ngIf="country.region.value != '' ">{{country.region.value}}</td>
+                        <td *ngIf="country.region.value == '' ">-</td>
+                        <td *ngIf="country.region.id != '' ">{{country.region.id}}</td>
+                        <td *ngIf="country.region.id == '' ">-</td>
+                        <td *ngIf="country.region.iso2code != '' ">{{country.region.iso2code}}</td>
+                        <td *ngIf="country.region.iso2code == '' ">-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="color:blue">Admin region</th>
+                        <td *ngIf="country.adminregion.value != '' ">{{country.adminregion.value}}</td>
+                        <td *ngIf="country.adminregion.value == '' ">-</td>
+                        <td *ngIf="country.adminregion.id != '' ">{{country.adminregion.id}}</td>
+                        <td *ngIf="country.adminregion.id == '' ">-</td>
+                        <td *ngIf="country.adminregion.iso2code != '' ">{{country.adminregion.iso2code}}</td>
+                        <td *ngIf="country.adminregion.iso2code == '' ">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
