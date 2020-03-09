@@ -1,0 +1,84 @@
+<div class="container" style="width: 100%;margin:0px">
+    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+        <div class="col-md-8">
+            <h1>Realización de la práctica:</h1>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
+        </div>
+    </div>
+</div>
+<div class="container" style="width: 100%">
+
+    <h4>creada una app : app-world</h4>
+
+    <h4>creadas 3 librerias : </h4>
+    <p>1) domain : para crear las interfaces de los objetos que utilizamos (region, pais)</p>
+    <p>2) data : para llamar por HTTP al banco de paises </p>
+    <ul>
+        <li>1.servicio que recupera todas las regiones http://api.worldbank.org/v2/region/?format=json</li>
+        <li>2.servicio que recupera los paises de una region http://api.worldbank.org/v2/region/ECS/country?per_page=1000&format=json</li>
+        <li>3.servicio que recupera la info de un pais http://api.worldbank.org/V2/country/ESP?format=json</li>
+    </ul>
+
+    <p> 3) ui: para crear los componentes que mostraran las regiones, paises..</p>
+    <ul>
+        <li>-componente RegionsComponent para la home</li>
+        <li>-componente RegionItemComponent para la pagina de 1 region</li>
+        <li>-componente CountryItemComponent para la página de 1 pais</li>
+    </ul>
+
+    <h4>test e2e de home --> OK</h4>
+    <p>yarn e2e:world-app</p>
+    <p>Nota: no funcionaba request HTTP debido al proxy de la VPN de empresa:</p>
+    <p>SIN VPN:</p>
+    <img src="../assets/img/Proxy_cypress.png" style="width:40%;">
+    <img src="../assets/img/sinVPN.png" style="width:60%;">
+    <p>CON VPN:</p>
+    <img src="../assets/img/ConVPN1.png" style="width:50%;">
+    <img src="../assets/img/ConVPN2.png" style="width:50%;">
+
+
+
+    <h4>test unitario --> OK.</h4>
+    <p>nota: no funcionaba jest. solucionado: yarn add --dev jest</p>
+    <ul>
+        <li>1. AppComponent -> yarn test:world-app </li>
+        <li>2. RegionsComponent -> yarn test:common-ui</li>
+        <li>3. RegionsService -> yarn test:common-data</li>
+    </ul>
+
+    <h4>ONPUSH</h4>
+
+    <h6>cdr.detectChanges()</h6>
+    <ul>
+        <li>En RegionsComponent, que muestra la tabla con las regiones, hacemos cdr.detectChanges() despues de llamada HTTP a la API(asíncrona).</li>
+        <li>En RegionItemComponent, que muestra los paises de una region, hacemos cdr.detectChanges() despues de llamada HTTP a la API(asíncrona)</li>
+        <li>En CountryItemComponent, que muestra los datos de un pais, hacemos cdr.detectChanges() despues de llamada HTTP a la API (asíncrona)</li>
+    </ul>
+
+    <h6>Historico de navegacion </h6>
+    <p>Utiliza el servicio HistoryService con dos objetos <strong>BehaviorSubject</strong> para actualizacion onPush del historial:</p>
+    <ul>
+        <li>1- contador de navegaciones (mostrado en AppComponent). Comportamiento: navegar a cualquier pagina (home, region, pais) incrementa el contador , y volver hacia atrás en la navegacion también. Sólo no cuenta como navegacion entrar/salir del historial
+            de navegacion. </li>
+        <li>2- historial : array de NavigationItem. Comportamiento: las páginas de Home , Region y Pais, utilizan un objeto BehaviorSubject[] para almacenar items de navegacion pada vez que se navega hacia una de estas páginas</li>
+    </ul>
+    <h4>Componente Container Historial y presentadores: </h4>
+    <ul>
+        <li>Container -> HistoryComponent : escucha eventos para borrar entrada del historial </li>
+        <li>Presenter -> HistoryPresenter: muestra el historial y emite eventos OnPush para borrar una entrada del historial. El borrado se realiza en el Container.</li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

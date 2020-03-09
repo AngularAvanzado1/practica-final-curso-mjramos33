@@ -2,7 +2,6 @@
 <h3>Práctica Final de Mónica Jiménez Ramos</h3>
 
 <div *ngIf="regions">
-
     <table class="regions-table table table-striped table-hover table-dark">
         <tr class="bg-danger">
             <th scope="col">ID</th>
@@ -16,8 +15,19 @@
             <td>{{region.name}}</td>
             <td>{{region.code}}</td>
             <td>{{region.iso2code}}</td>
-            <td><button (click)=" verRegion(region.code) " class="btn btn-secondary ">Ver región</button></td>
+            <td><button (click)="verRegion(region.code)" class="btn btn-secondary ">Ver región</button></td>
         </tr>
     </table>
 
+</div>
+<div *ngIf="regions==null">
+    <table class="regions-table table table-striped table-hover table-dark">
+        <tr class="bg-danger">
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">CODE</th>
+            <th scope="col">ISO TO CODE</th>
+            <th scope="col"></th>
+        </tr>
+    </table>
 </div>

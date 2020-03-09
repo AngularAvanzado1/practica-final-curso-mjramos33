@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UiModule, RegionsComponent } from '@practica-final/ui';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { RegionsService } from '../../../../data/src/lib/regions/regions.service';
+import { OnInit } from '@angular/core';
 
 
 describe('GIVEN: A RegionsComponent declared in UiModule', () => {
@@ -13,7 +15,7 @@ describe('GIVEN: A RegionsComponent declared in UiModule', () => {
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-              imports: [RouterTestingModule , UiModule, HttpClientModule ],
+              imports: [RouterTestingModule ,UiModule, HttpClientModule ],
               declarations: []
             }).compileComponents();
 
@@ -37,14 +39,15 @@ describe('GIVEN: A RegionsComponent declared in UiModule', () => {
     });
     
     it('THEN: Should render a table with four columns', () => {
-      fixture = TestBed.createComponent(RegionsComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('table').textContent).toContain('ID');
-      expect(compiled.querySelector('table').textContent).toContain('ISO TO CODE');
-      expect(compiled.querySelector('table').textContent).toContain('CODE');
-      expect(compiled.querySelector('table').textContent).toContain('NAME');
-    });
+        fixture = TestBed.createComponent(RegionsComponent);
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;          
+        expect(compiled.querySelector('table').textContent).toContain('ID');
+        expect(compiled.querySelector('table').textContent).toContain('ISO TO CODE');
+        expect(compiled.querySelector('table').textContent).toContain('CODE');
+        expect(compiled.querySelector('table').textContent).toContain('NAME');
+      }
+    );
     
   /*
     //He preguntado esto por el foro 

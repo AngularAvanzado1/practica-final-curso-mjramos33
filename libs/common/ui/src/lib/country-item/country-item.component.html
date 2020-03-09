@@ -3,7 +3,7 @@
         <div class="col-md-3 col-sm-6">
             <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6" *ngIf="country">
             <button class="btn btn-group-toggle" (click)="navigateToRegion(country.region.id);" style="margin:0.5em">Back to Region</button>
         </div>
     </div>

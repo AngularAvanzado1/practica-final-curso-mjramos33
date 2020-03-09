@@ -1,12 +1,16 @@
 /* TEST E2E CON CYPRESS PARA LA HOME Y PARA LA PAGINA DE REGION (prueba: North America) */
 
-import { getHeader, getH3, getTableContent,getH5 } from '../support/app.po';
+import { getHeader, getH3, getTableContent,getH5 ,getNavLink } from '../support/app.po';
 
-describe('GIVEN: the world-app application', () => {
-  beforeEach(() => cy.visit('/'));
-  context('WHEN: user visits the Home',() => {
+/*TEST COMPONENTE: RegionsComponent */
+describe('GIVEN: the world-app application', ()=> {
 
-    it('THEN: should display a header', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+  context('WHEN: user visits the Home',()=> {
+
+    it('THEN: should display a header',  () => {
       getHeader().contains('TrainingIT - Proyectos escalables con Angular');
     });//header
 
@@ -14,7 +18,11 @@ describe('GIVEN: the world-app application', () => {
       getH3().contains('Mónica Jiménez');
     });//author
 
-    it('THEN: should display a table with seven regions', () => {
+    it('THEN: should display a link to History', () => {
+      getNavLink().contains('Ver historial');
+    });//link a Historial 
+
+    it('THEN: should display a table with seven regions', ()=> {
       getTableContent().contains('East Asia & Pacific');
       getTableContent().contains('Europe & Central Asia');
       getTableContent().contains('Latin America & Caribbean');
@@ -30,6 +38,8 @@ describe('GIVEN: the world-app application', () => {
 });//Describe
 
 
+
+/*TEST COMPONENTE 1 REGION: RegionITEMComponent */
 describe('GIVEN: the world-app application', () => {
   beforeEach(() => cy.visit('/region/NAC'));
   context('WHEN: user visits the region "North America"',() => {

@@ -1,3 +1,16 @@
-<p>history works!</p>
+<!--CONTENEDOR : -->
+<div class="container" style="width: 100%">
+    <div class="row" style="margin:20px;">
+        <div class="col-md-6">
+            <h1>HISTORY</h1>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
+        </div>
+    </div>
+</div>
+<!--PRESENTADOR : -->
+<ab-worldApp-history-presenter [history]="hist" (removeItem)="onRemove($event)"></ab-worldApp-history-presenter>
+<!--END OF PRESENTADOR : -->
 
-<button class="btn btn-group-toggle" (click)="navigateToHome();" style="margin:0.5em">Back to Home</button>
+<!--END OF CONTENEDOR : -->

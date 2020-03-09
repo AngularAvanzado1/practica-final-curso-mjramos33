@@ -1,0 +1,22 @@
+<div *ngIf="history.length==0">
+    <p>Aún no hay navegaciones que mostrar</p>
+</div>
+<div *ngIf="history.length>0" style="margin-top:2em;">
+    <table class="table ">
+        <thead>
+            <tr>
+                <td scope="col ">NAVIGATION</td>
+                <td scope="col ">TIME</td>
+                <td scope="col "></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let navigation of history; ">
+                <td scope="row ">{{navigation.page_name}}</td>
+                <td scope="row ">{{navigation.date | date:'shortTime'}}</td>
+                <td scope="row "><button (click)="removeItem.emit(navigation.id) ">Borrar</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

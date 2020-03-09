@@ -4,13 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryComponent } from './history.component';
+import { HistoryPresenterComponent } from './history-presenter/history-presenter.component';
 
 const routes: Routes = [
   { path: '', component: HistoryComponent }
 ];
 
 @NgModule({
-  declarations: [HistoryComponent],
+  declarations: [HistoryComponent, HistoryPresenterComponent],
   imports: [
     CommonModule,
     HistoryRoutingModule,

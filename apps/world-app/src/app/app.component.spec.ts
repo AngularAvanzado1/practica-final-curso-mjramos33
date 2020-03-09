@@ -30,6 +30,12 @@ describe('GIVEN: An AppComponent declared in AppModule', () => {
         expect(app.title).toEqual('world-app');
       });
     
+      it(`THEN: Should have a counter for navigations`, () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const app = fixture.debugElement.componentInstance;
+        expect(app.navegaciones).toBe(0);
+      });
 
   });//Describe2
 });//Describe1

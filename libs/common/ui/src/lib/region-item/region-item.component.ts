@@ -5,6 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ActivatedRoute , Router } from '@angular/router';
 import { Region, Country } from '@practica-final/domain';
 import { RegionsService } from '../../../../data/src/lib/regions/regions.service';
+import { HistoryService } from '../../../../../../apps/world-app/src/app/history.service';
 
 @Component({
   selector: 'ui-region-item',
@@ -15,7 +16,10 @@ import { RegionsService } from '../../../../data/src/lib/regions/regions.service
 export class RegionItemComponent implements OnInit {
 
   public countries:Country[];
-  constructor(private activatedRoute:ActivatedRoute , private dataService:RegionsService , private router:Router , private cdr:ChangeDetectorRef) { 
+  public regionCode:string;
+
+  constructor(private activatedRoute:ActivatedRoute , private dataService:RegionsService , 
+                 private historyService:HistoryService, private router:Router , private cdr:ChangeDetectorRef) { 
   }
 
   ngOnInit(): void {
@@ -23,8 +27,9 @@ export class RegionItemComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       param=>{
         console.log("[RegionItemComponent]. Ver region: "+param['code']);
+        this.regionCode=param['code'];
         //llama a servicio que obtiene info de una region:
-        this.dataService.getOneRegionFromApi(param['code']).subscribe(a=>{
+        this.dataService.getOneRegionFromApi(this.regionCode).subscribe(a=>{
           this.countries=a[1];
           console.log("[RegionItemComponent]--->DETECCION CAMBIOS ONPUSH")
           this.cdr.detectChanges();      //FORZAMOS ONPUSH DE LOS CAMBIOS
@@ -37,11 +42,33 @@ export class RegionItemComponent implements OnInit {
   /*método para volver a la Home*/
   navigateToHome(){
     this.router.navigate(['home']);
+    //incrementamos el contador de navegaciones
+    this.insertItemInHistory("Region '"+this.regionCode+"' > Home");
+
   }
     
   /*método para ir a la página de pais */
-  navigateToCountry(id:string){
+  navigateToCountry(id:string,name:string){
     this.router.navigate(['country/',id]);
+    //Añadimos Item al historial de navegacion:
+    this.insertItemInHistory("Region '"+this.regionCode+"' > Country '"+name+"'");
+
+  }
+
+  /*Metodo que modifica OnPUsh el historial*/
+  insertItemInHistory(toPage:string){
+    const navegacion={
+      id:this.historyService.getMaxID()+1,
+      page_name:toPage,
+      date:new Date()
+    }
+    const newHistory =this.historyService.history$.value;
+    newHistory.push(navegacion); 
+    //añadimos navegacion a historial
+    this.historyService.history$.next(newHistory);
+    //incrementamos el contador de navegaciones
+    this.historyService.navCounter$.next(this.historyService.navCounter$.value+1);
+    ;
   }
 
 }
