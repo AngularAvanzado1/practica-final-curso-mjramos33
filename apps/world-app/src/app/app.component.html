@@ -5,9 +5,12 @@
         <router-outlet></router-outlet>
     </div>
     <nav class="col-md-3 " class="history ">
+        <a [routerLink]="[ '/explanation'] "><strong>Ver explicación práctica</strong></a>
+        <br>
+        <br>
         <a [routerLink]="[ '/history'] ">Ver historial: {{navegaciones}} navegaciones</a>
         <br>
-        <a [routerLink]="[ '/explanation'] ">Ver explicación práctica</a>
+        <br>
+        <a [routerLink]="[ '/favorites'] ">Ver Favoritos</a>
     </nav>
-
 </div>

@@ -46,7 +46,11 @@
         "global": "^4.4.0",
         "reflect-metadata": "^0.1.13",
         "rxjs": "~6.5.0",
-        "zone.js": "^0.10.2"
+        "zone.js": "^0.10.2",
+        "@ngrx/store": "8.5.0",
+        "@ngrx/effects": "8.5.0",
+        "@ngrx/entity": "8.5.0",
+        "@ngrx/router-store": "8.5.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "0.900.1",
@@ -73,6 +77,12 @@
         "ts-jest": "24.0.0",
         "ts-node": "~7.0.0",
         "tslint": "~5.11.0",
-        "typescript": "~3.7.4"
+        "typescript": "~3.7.4",
+        "@ngrx/schematics": "8.5.0",
+        "@ngrx/store-devtools": "8.5.0",
+        "@ngrx/store": "8.5.0",
+        "@ngrx/effects": "8.5.0",
+        "@ngrx/entity": "8.5.0",
+        "@ngrx/router-store": "8.5.0"
     }
 }

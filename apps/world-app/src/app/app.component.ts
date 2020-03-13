@@ -19,7 +19,7 @@ export class AppComponent {
     //nos suscribimos a los cambios en el contador de navegaciones
     this.historyService.navCounter$.subscribe({
       next:counter=>{
-        console.log("[AppComponent]--->DETECCION CAMBIOS ONPUSH");
+        console.log("[AppComponent]navCounter-->DETECCION CAMBIOS ONPUSH");
         this.navegaciones=counter;
       }
     });//subscribe
@@ -27,7 +27,7 @@ export class AppComponent {
     //nos suscribimos a los cambios en el historial
     this.historyService.history$.subscribe({
         next:h=>{
-          console.log("[AppComponent]--->DETECCION CAMBIOS ONPUSH");
+          console.log("[AppComponent]history-->DETECCION CAMBIOS ONPUSH");
           this.history=h;
         }
     });//subscribe

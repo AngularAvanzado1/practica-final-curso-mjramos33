@@ -32,7 +32,6 @@
     <p>yarn e2e:world-app</p>
     <p>Nota: no funcionaba request HTTP debido al proxy de la VPN de empresa:</p>
     <p>SIN VPN:</p>
-    <img src="../assets/img/Proxy_cypress.png" style="width:40%;">
     <img src="../assets/img/sinVPN.png" style="width:60%;">
     <p>CON VPN:</p>
     <img src="../assets/img/ConVPN1.png" style="width:50%;">
@@ -48,7 +47,7 @@
         <li>3. RegionsService -> yarn test:common-data</li>
     </ul>
 
-    <h4>ONPUSH</h4>
+    <h4>Detección de cambios OnPush</h4>
 
     <h6>cdr.detectChanges()</h6>
     <ul>
@@ -58,11 +57,13 @@
     </ul>
 
     <h6>Historico de navegacion </h6>
-    <p>Utiliza el servicio HistoryService con dos objetos <strong>BehaviorSubject</strong> para actualizacion onPush del historial:</p>
+    <p style="color:red">Importante: el histórico de navegación no tiene nada que ver con los estados y navegaciones NgRx, hice estos componententes y funcionalidades antes de empezar NgRx.</p>
+    <p>Utilizamos el servicio HistoryService con dos objetos <strong>BehaviorSubject</strong> para actualizacion onPush del historial:</p>
     <ul>
-        <li>1- contador de navegaciones (mostrado en AppComponent). Comportamiento: navegar a cualquier pagina (home, region, pais) incrementa el contador , y volver hacia atrás en la navegacion también. Sólo no cuenta como navegacion entrar/salir del historial
-            de navegacion. </li>
-        <li>2- historial : array de NavigationItem. Comportamiento: las páginas de Home , Region y Pais, utilizan un objeto BehaviorSubject[] para almacenar items de navegacion pada vez que se navega hacia una de estas páginas</li>
+        <li>1- contador de navegaciones (mostrado en AppComponent, esquina superior dcha). Comportamiento: navegar a cualquier pagina (home, region, pais) incrementa el contador , y volver hacia atrás también. Sólo no cuenta como navegacion entrar/salir del
+            historial y favoritos.
+        </li>
+        <li>2- historial : array de NavigationItem. Comportamiento: las páginas de Home, Region y Pais, utilizan un objeto BehaviorSubject[] para almacenar items de navegacion pada vez que se navega hacia una de estas páginas</li>
     </ul>
     <h4>Componente Container Historial y presentadores: </h4>
     <ul>
@@ -71,10 +72,29 @@
     </ul>
 
 
+    <h4>NGRX</h4>
+    <ul>
+        <li> Instalación de NgRx en la app principal</li>
+        <li>Creado un nuevo módulo Favorites con componente FavoriteComponent .</li>
+        <li>Cuando se inicializa el componente, llama a servicio:
 
-
-
-
+            <ul>
+                <li>1) FavoriteService.loadFavorites: hace <strong>dispatch </strong> de <span style="background-color:yellow">Action</span> LoadFavorites -><span style="background-color:yellow">Reducer </span> devuelve estado inicial.
+                    <img src="../../assets/img/ngrx1.png" style="width:60%;"> <br> -> onSucess <span style="background-color:yellow">(Effect)</span> : incrementa un sucessContador y añade una sugerencia a un array los favoritos. Por aplicarle una lógica
+                    cualquiera –en el reducer solo se pueden usar funciones puras y por eso usamos un effect-, dependiendo de la hora del día:
+                    <ul>
+                        <li>Antes de las 12AM: sugerencia = Chipre</li>
+                        <li>De 12 a 18: sugerencia = Andorra</li>
+                        <li>A partir de las 18: sugerencia = región Latinoamérica</li>
+                    </ul>
+                    <strong>El efecto devuelve un observable de la Accion </strong> Actions.loadFavoritesSuccess-> <strong><span style="background-color:yellow">Reducer </span> modifica el estado inicial:</strong>
+                    <img src="../../assets/img/ngrx2.png" style="width:60%;"> <br>
+                </li>
+                <li>2) FavoriteService.addFavorites (x2 veces) ->distpach <span style="background-color:yellow">Action</span> addFavorite -> <strong><span style="background-color:yellow">Reducer </span> modfica el estado </strong>
+                    <img src="../../assets/img/ngrx3.png" style="width:60%;"> <br> -> onSucess <span style="background-color:yellow">(Effect)</span> devuelve Action Actions.addFavoritesSuccessm-> reducer no modifica el estado</li>
+            </ul>
+        </li>
+    </ul>
 
 
 
