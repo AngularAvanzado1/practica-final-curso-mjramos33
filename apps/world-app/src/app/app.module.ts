@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule,RouterState, routerReducer } from '@ngrx/router-store';
 import { reducers, metaReducers } from './reducers';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,7 +56,8 @@ import { reducers, metaReducers } from './reducers';
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot({routerState:RouterState.Minimal}) //para reducir la info que mete en el payload
+    StoreRouterConnectingModule.forRoot({routerState:RouterState.Minimal}),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) //para reducir la info que mete en el payload
   ],
   providers: [],
   bootstrap: [AppComponent]
